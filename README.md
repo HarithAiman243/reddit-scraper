@@ -3,6 +3,12 @@
 ## Overview:
 Simple reddit scraper, that fetches posts with images, and stores them in JSON. And displays them in web page.
 
+## Files:
+scraper.py
+requirements.txt
+reddit_image_posts.json
+reddit_images_posts.html
+
 ### Reference I use:
 [1] https://github.com/thejoeosborne/simple-scraper
 [2] https://www.geeksforgeeks.org/python/how-to-scrape-multiple-pages-of-a-website-using-python/

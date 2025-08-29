@@ -35,3 +35,8 @@ for i in range(10):  # simulate 10 pages
         })
 
     after = data['data']['after']  # update for next "page"
+
+    print(f"Scraped page {i+1}, total collected posts so far: {sum(len(p['posts']) for p in pages)}")
+    time.sleep(2)  # wait for 2 seconds (avoid rate limiting to avoid getting banned)
+
+print("\nDone. Total collected image posts:", sum(len(p['posts']) for p in pages))

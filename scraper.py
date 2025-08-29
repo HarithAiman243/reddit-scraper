@@ -15,3 +15,23 @@ for i in range(10):  # simulate 10 pages
     }
     res = requests.get(url, headers=headers, params=params)
     data = res.json()
+
+    page_posts = []  # store this page’s posts
+    for post in data['data']['children']:
+        post = post['data']
+
+        if post.get("post_hint") == "image": # Filter out by Image
+            title = post['title'] # Get post title
+            img = post['url'] # Get post img url
+            page_posts.append({
+                "post_title": title,
+                "image_url": img
+            })
+    
+    if page_posts: # Separate page.
+        pages.append({
+            "page": i + 1,
+            "posts": page_posts
+        })
+
+    after = data['data']['after']  # update for next "page"

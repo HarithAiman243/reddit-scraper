@@ -44,3 +44,38 @@ print("\nDone. Total collected image posts:", sum(len(p['posts']) for p in pages
 # save results into a JSON file & separated by page
 with open("reddit_image_posts.json", "w", encoding="utf-8") as f:
     json.dump(pages, f, ensure_ascii=False, indent=2)
+
+
+# Generate HTML to display posts with images
+html_content = """
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reddit Images</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
+        .post { margin-bottom: 30px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .title { font-size: 18px; margin-bottom: 10px; }
+        img { max-width: 500px; display: block; margin-bottom: 10px; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <h1>Reddit Posts with Images</h1>
+"""
+for post in page_posts:
+    html_content += f'<div class="post">\n'
+    html_content += f'  <div class="title">{post["post_title"]}</div>\n'
+    html_content += f'  <img src="{post["image_url"]}" alt="Image">\n'
+    html_content += "</div>\n"
+
+html_content += """
+</body>
+</html>
+"""
+# Save HTML file
+with open("reddit_images_posts.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Open reddit_images_posts.html in your browser to view posts.")
+

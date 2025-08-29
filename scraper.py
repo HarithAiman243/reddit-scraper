@@ -40,3 +40,7 @@ for i in range(10):  # simulate 10 pages
     time.sleep(2)  # wait for 2 seconds (avoid rate limiting to avoid getting banned)
 
 print("\nDone. Total collected image posts:", sum(len(p['posts']) for p in pages))
+
+# save results into a JSON file & separated by page
+with open("reddit_image_posts.json", "w", encoding="utf-8") as f:
+    json.dump(pages, f, ensure_ascii=False, indent=2)

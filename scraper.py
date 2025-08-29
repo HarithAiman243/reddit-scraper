@@ -63,17 +63,13 @@ html_content = """
 <body>
     <h1>Reddit Posts with Images</h1>
 """
-html_content += '<div id="pages">\n'
 for page in pages:
-    display = "block" if page["page_number"] == 1 else "none"
-    html_content += f'<div class="page" id="page-{page["page_number"]}" style="display:{display};">\n'
-    for post in page_posts:
+    html_content += f"<h2>Page {page['page']}</h2>\n"
+    for post in page["posts"]:
         html_content += f'<div class="post">\n'
         html_content += f'  <div class="title">{post["post_title"]}</div>\n'
         html_content += f'  <img src="{post["image_url"]}" alt="Image">\n'
         html_content += "</div>\n"
-
-    html_content += '</div>\n'
 
 html_content += """
 </body>
